@@ -6,4 +6,5 @@
 
 # IDE specific files:
 .idea/
+*.iml
 .kiro/
