@@ -1,0 +1,9 @@
+# macOS specific files:
+.DS_Store
+
+# Python `virtualenv` directories:
+.env/
+
+# IDE specific files:
+.idea/
+.kiro/
