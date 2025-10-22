@@ -1,9 +1,4 @@
-[submodule "examples/90-strands_studio_ui/strands_studio_ui"]
-	path = examples/90-strands_studio_ui/strands_studio_ui
-	url = git@github.com:xiehust/strands_studio_ui.git
-[submodule "examples/05-strands_studio_ui/strands_studio_ui"]
-	path = examples/05-strands_studio_ui/strands_studio_ui
-	url = git@github.com:xiehust/strands_studio_ui.git
 [submodule "strands-agents-examples/05-strands_studio_ui/strands_studio_ui"]
 	path = strands-agents-examples/05-strands_studio_ui/strands_studio_ui
 	url = git@github.com:xiehust/strands_studio_ui.git
+  ignore = dirty
