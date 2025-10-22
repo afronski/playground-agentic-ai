@@ -1,8 +1,9 @@
 # macOS specific files:
 .DS_Store
 
-# Python `virtualenv` directories:
+# Python `virtualenv` directories and other Python specific files:
 .env/
+__pycache__/
 
 # IDE specific files:
 .idea/

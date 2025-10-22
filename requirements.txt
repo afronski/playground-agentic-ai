@@ -1,10 +1,13 @@
-boto3==1.40.51
-botocore==1.40.51
+boto3==1.40.56
+botocore==1.40.56
 
-strands-agents==1.12.0
-strands-agents-tools==0.2.11
+strands-agents==1.13.0
+strands-agents-tools==0.2.12
 strands-agents-builder==0.1.10
 
 uv
-mcp
+
+mcp==1.18.0
+fastmcp==2.12.4
+
 ddgs
