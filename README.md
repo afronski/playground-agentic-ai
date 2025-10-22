@@ -28,11 +28,12 @@ $ npm run package
 
 ## TODO
 
-- [ ] Strands Agents Python SDK quickstart: https://strandsagents.com/latest/documentation/docs/user-guide/quickstart
+- [ ] Samples for Python SDK of Strands Agents: https://github.com/strands-agents/samples
+- [ ] Tutorial #1: https://www.youtube.com/watch?v=TD2ihEBkdkY
+- [ ] Tutorial #2: https://www.youtube.com/watch?v=N7FGbBq1mI4
+- [ ] AWS MCP servers: https://awslabs.github.io/mcp
 - [ ] Spring AI example for Amazon Bedrock Agent Core: https://github.com/jamesward/hello-spring-ai-agentcore
 - [ ] Spring AI MCP example: https://github.com/jamesward/spring-ai-mcp-demo
-- [ ] Samples for Python SDK of Strands Agents: https://github.com/strands-agents/samples
-- [ ] Strands Agents UI Studio: https://github.com/xiehust/strands_studio_ui
 
 ## License
 

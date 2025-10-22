@@ -8,3 +8,6 @@
 .idea/
 *.iml
 .kiro/
+
+# Logs and other debugging files:
+*.log
