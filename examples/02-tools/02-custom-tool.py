@@ -2,10 +2,9 @@ import logging
 from strands import Agent, tool
 from strands_tools import calculator, current_time
 
-# Enables Strands debug log level.
+# Enables Strands `debug` log level and log it to a file.
+agentName = "02-custom-tool"
 logging.getLogger("strands").setLevel(logging.DEBUG)
-
-agentName = "strands-custom-tool"
 
 logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
 fileHandler = logging.FileHandler("{0}/{1}.log".format("logs", agentName))
