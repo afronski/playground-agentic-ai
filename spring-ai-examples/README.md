@@ -1,0 +1,2 @@
+- [ ] https://github.com/jamesward/hello-spring-ai-agentcore
+- [ ] https://github.com/jamesward/spring-ai-mcp-demo
