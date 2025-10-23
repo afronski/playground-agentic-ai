@@ -7,7 +7,7 @@ from pprint import pprint
 logging.getLogger("strands").setLevel(logging.DEBUG)
 
 # Create a logger for our agent.
-agentName = "01-built-in-tools"
+agentName = "10-built-in-tools"
 agentLogger = logging.getLogger(agentName)
 agentLogger.setLevel(logging.DEBUG)
 

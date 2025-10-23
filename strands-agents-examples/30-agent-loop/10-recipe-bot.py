@@ -4,7 +4,7 @@ from ddgs.exceptions import DDGSException, RatelimitException
 from strands import Agent, tool
 
 # Enables Strands `debug` log level and log it to a file.
-agentName = "01-recipe-bot"
+agentName = "10-recipe-bot"
 logging.getLogger("strands").setLevel(logging.DEBUG)
 
 logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")

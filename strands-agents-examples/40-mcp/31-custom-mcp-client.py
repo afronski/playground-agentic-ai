@@ -4,7 +4,7 @@ from strands import Agent
 from strands.tools.mcp import MCPClient
 
 # Enables Strands `debug` log level and log it to a file.
-agentName = "03-custom-mcp-client"
+agentName = "31-custom-mcp-client"
 logging.getLogger("strands").setLevel(logging.DEBUG)
 
 logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
