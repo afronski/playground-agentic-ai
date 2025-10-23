@@ -26,6 +26,11 @@ $ npm install
 $ npm run package
 ```
 
+## Remarks
+
+- *Strands Agents* does not support [Elicitation](https://modelcontextprotocol.io/specification/2025-06-18/client/elicitation) yet ([ticket is here](https://github.com/strands-agents/sdk-python/issues/789)).
+  - Recommended way for now is to use `handoff_to_user` tool.
+
 ## Resources
 
 - [Building Intelligent Agents with Strands: A Hands-On Guide](https://www.youtube.com/watch?v=TD2ihEBkdkY)

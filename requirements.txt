@@ -7,6 +7,9 @@ strands-agents-builder==0.1.10
 
 uv
 
+fastapi[standard]==0.119.1
+pydantic==2.12.3
+
 mcp==1.18.0
 fastmcp==2.12.4
 

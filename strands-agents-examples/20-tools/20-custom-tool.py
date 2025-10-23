@@ -9,7 +9,7 @@ logging.getLogger("strands").setLevel(logging.DEBUG)
 logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
 fileHandler = logging.FileHandler("{0}/{1}.log".format("logs", agentName))
 
-# Sets the logging format and streams logs to stderr.
+# Sets the logging format and streams logs to a file.
 logging.basicConfig(
   format="%(levelname)s | %(name)s | %(message)s",
   handlers=[fileHandler]

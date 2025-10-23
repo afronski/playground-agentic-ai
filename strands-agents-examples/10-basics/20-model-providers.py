@@ -20,4 +20,6 @@ bedrock_model = BedrockModel(
 
 agent = Agent(model=bedrock_model)
 
+print(f"⚙️ Detailed model provider configuration: {agent.model.config}")
+
 agent("Hello! Who are you?")

@@ -1,8 +1,8 @@
 from fastmcp import FastMCP
 
-mcp = FastMCP("My MCP Server")
+mcp = FastMCP("Greet MCP Server")
 
-@mcp.tool
+@mcp.tool(description="Greeting service based on the provided name")
 def greet(name: str) -> str:
   return f"Hello, {name}!"
 
