@@ -14,3 +14,5 @@ mcp==1.18.0
 fastmcp==2.12.4
 
 ddgs
+langfuse
+llm_guard
