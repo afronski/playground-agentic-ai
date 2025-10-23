@@ -13,3 +13,4 @@ __pycache__/
 # Logs and other debugging files:
 *.log
 *.mp3
+*.pdf
