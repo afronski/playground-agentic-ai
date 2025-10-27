@@ -5,9 +5,9 @@
 Here you can find a list of the recommended prerequisites for this repository.
 
 - Pre-installed tools:
-  - [Finch](https://runfinch.com) or any other tool for local container development compatible with *Docker* APIs.
+  - [Finch](https://runfinch.com) or any other tool for local container development, that is compatible with *Docker* APIs.
   - Most recent *AWS CLI* (`2.31.4` or higher).
-  - Most recent *AWS SAM CLI* (`1.144.0` or higher).
+  - Most recent *AWS SAM CLI* (`1.145.2` or higher).
   - Node.js in version `22.20.x` or higher.
   - Python in version `3.12.x` or higher.
   - Java in version `21.x` or higher.

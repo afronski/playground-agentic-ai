@@ -21,3 +21,8 @@ __pycache__/
 
 # AWS SAM specific directories.
 .aws-sam/
+
+# Amazon Bedrock AgentCore specific files and directories.
+.bedrock_agentcore/
+.bedrock_agentcore.yaml
+strands-agents-examples/90-deployment/30-amazon-bedrock-agentcore/.dockerignore

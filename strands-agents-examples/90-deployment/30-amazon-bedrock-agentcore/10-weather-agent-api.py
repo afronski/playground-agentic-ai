@@ -1,31 +1,23 @@
 import logging
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
-from fastapi.responses import PlainTextResponse, StreamingResponse
+from bedrock_agentcore import BedrockAgentCoreApp
 from strands import Agent, tool
 from strands.models import BedrockModel
-from strands_tools import http_request
+from strands_tools.http_request import http_request
 
-# Enables Strands `debug` log level.
-logging.getLogger("strands").setLevel(logging.DEBUG)
-
-# Create a logger for our agent.
+# Enables Strands `debug` log level and log it to a specific file.
 agentName = "10-weather-agent-api"
-agentLogger = logging.getLogger(agentName)
-agentLogger.setLevel(logging.DEBUG)
+
+strandsLogger = logging.getLogger("strands")
+strandsLogger.setLevel(logging.DEBUG)
 
 logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
 fileHandler = logging.FileHandler("{0}/{1}.log".format("logs", agentName))
 fileHandler.setFormatter(logFormatter)
-agentLogger.addHandler(fileHandler)
 
-# Sets the logging format and streams logs to a file.
-logging.basicConfig(
-  format="%(levelname)s | %(name)s | %(message)s",
-  handlers=[fileHandler]
-)
+strandsLogger.handlers.clear()
+strandsLogger.addHandler(fileHandler)
 
-app = FastAPI(title="Weather API")
+app = BedrockAgentCoreApp()
 
 class WeatherAgent(Agent):
   __WEATHER_SYSTEM_PROMPT = """You are a weather assistant with HTTP capabilities. You can:
@@ -59,7 +51,7 @@ class WeatherAgent(Agent):
 
   def __init__(self):
     model = BedrockModel(
-      model_id="eu.anthropic.claude-sonnet-4-5-20250929-v1:0",
+      model_id="arn:aws:bedrock:eu-west-1:641421169031:inference-profile/eu.amazon.nova-pro-v1:0",
       region_name="eu-west-1",
       temperature=0.3
     )
@@ -71,45 +63,15 @@ class WeatherAgent(Agent):
       callback_handler=None
     )
 
-class PromptRequest(BaseModel):
-  prompt: str
+agent = WeatherAgent()
 
-@app.post('/weather')
-async def get_weather(request: PromptRequest):
-  prompt = request.prompt
+@app.entrypoint
+async def agent_invocation(payload):
+  user_message = payload.get(
+    "prompt", "No prompt found in input, please guide customer to create a json payload with prompt key"
+  )
+  response = agent(user_message)
+  return str(response)
 
-  if not prompt:
-    raise HTTPException(status_code=400, detail="No prompt provided")
-
-  try:
-    weather_agent = WeatherAgent()
-    response = weather_agent(prompt)
-    content = str(response)
-    return PlainTextResponse(content=content)
-  except Exception as exception:
-    raise HTTPException(status_code=500, detail=str(exception))
-
-async def run_weather_agent_and_stream_response(prompt: str):
-  weather_agent = WeatherAgent()
-
-  async for item in weather_agent.stream_async(prompt):
-    if not weather_agent.is_summarizing:
-      continue
-
-    if "data" in item:
-      yield item['data']
-
-@app.post('/weather-streaming')
-async def get_weather_streaming(request: PromptRequest):
-  prompt = request.prompt
-
-  if not prompt:
-    raise HTTPException(status_code=400, detail="No prompt provided")
-
-  try:
-    return StreamingResponse(
-      run_weather_agent_and_stream_response(prompt),
-      media_type="text/plain"
-    )
-  except Exception as exception:
-    raise HTTPException(status_code=500, detail=str(exception))
+if __name__ == "__main__":
+  app.run()
