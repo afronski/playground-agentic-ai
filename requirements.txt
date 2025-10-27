@@ -13,6 +13,9 @@ pydantic==2.12.3
 mcp==1.18.0
 fastmcp==2.12.4
 
+python-json-logger==4.0.0
+aws-lambda-powertools[aws-sdk]==3.22.0
+
 ddgs
 langfuse
 llm_guard

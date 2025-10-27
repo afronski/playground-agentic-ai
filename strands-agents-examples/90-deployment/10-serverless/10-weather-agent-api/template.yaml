@@ -1,0 +1,47 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  AWS SAM Template for WeatherAgent API.
+
+Globals:
+  Function:
+    Timeout: 60
+    MemorySize: 2048
+
+Resources:
+  WeatherAgentFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: WeatherAgentFunction
+      CodeUri: agent/
+      Handler: app.handler
+      Runtime: python3.12
+      Architectures:
+        - x86_64
+      Environment:
+        Variables:
+          POWERTOOLS_METRICS_NAMESPACE: weather-agent-api
+          POWERTOOLS_SERVICE_NAME: weather-agent-api
+      Policies:
+        - Statement:
+          - Sid: "AmazonBedrockModelAccessPolicy"
+            Effect: Allow
+            Action:
+              - "bedrock:InvokeModel"
+              - "bedrock:InvokeModelWithResponseStream"
+            Resource:
+              - !Sub "arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:inference-profile/eu.anthropic.claude-sonnet-4-5-20250929-v1:0"
+              - "arn:aws:bedrock:eu-*::foundation-model/anthropic.claude-sonnet-4-5-20250929-v1:0"
+      Layers:
+        - "arn:aws:lambda:eu-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:23"
+
+
+Outputs:
+
+  WeatherAgentFunction:
+    Description: "WeatherAgent Lambda Function ARN"
+    Value: !GetAtt WeatherAgentFunction.Arn
+
+  WeatherAgentFunctionIamRole:
+    Description: "Implicit IAM Role created for WeatherAgent function"
+    Value: !GetAtt WeatherAgentFunctionRole.Arn
