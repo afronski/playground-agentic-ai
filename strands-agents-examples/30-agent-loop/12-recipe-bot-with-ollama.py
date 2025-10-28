@@ -64,7 +64,7 @@ if __name__ == "__main__":
     user_input = input("\nYou > ")
 
     if user_input is None or user_input == "":
-      print("You have to provide input to continue.")
+      print("Musisz coś napisać, żebym mógł wyszukać przepis.")
       continue
 
     if user_input.lower() == "exit":
