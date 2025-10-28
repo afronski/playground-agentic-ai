@@ -51,7 +51,7 @@ class WeatherAgent(Agent):
 
   def __init__(self):
     model = BedrockModel(
-      model_id="arn:aws:bedrock:eu-west-1:641421169031:inference-profile/eu.amazon.nova-pro-v1:0",
+      model_id="eu.amazon.nova-pro-v1:0",
       region_name="eu-west-1",
       temperature=0.3
     )

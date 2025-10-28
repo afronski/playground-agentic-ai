@@ -2,6 +2,7 @@ import logging
 from ddgs import DDGS
 from ddgs.exceptions import DDGSException, RatelimitException
 from strands import Agent, tool
+from strands.models.ollama import OllamaModel
 
 # Enables Strands `debug` log level and log it to a file.
 agentName = "10-recipe-bot"
@@ -37,25 +38,33 @@ def websearch(keywords: str, region: str = "us-en", max_results: int | None = No
   except Exception as e:
     return f"Exception: {e}"
 
+# Use Polish model via ollama (Bielik 11B v2.3).
+ollama_model = OllamaModel(
+  host="http://localhost:11434",
+  model_id="SpeakLeash/bielik-11b-v2.3-instruct:Q8_0"
+)
+
 # Create a recipe assistant agent.
 recipe_agent = Agent(
   system_prompt="""
-    You are RecipeBot, a helpful cooking assistant.
-    Help users find recipes based on ingredients and answer cooking questions.
-    Use the websearch tool to find recipes when users mention ingredients or to look up cooking information.
+    Jesteś pomocnym asystentem 'RecipeBot' do wyszukiwania przepisów kulinarnych.
+    Pomagasz użytkownikom znajdować przepisy na podstawie składników lub nazwy potrawy, którą użytkownik podał.
+    Po tym jak użytkownik poda składniki lub nazwę potrawy, to przygotuj przepis na podstawie podanych danych.
     """,
-  tools=[websearch],
+  model=ollama_model,
+  # Unfortunately, Bielik at this time does not support tools calling via Ollama. :(
+  # tools=[websearch],
 )
 
 if __name__ == "__main__":
-  print("\n👨‍🍳 RecipeBot: Ask me about recipes or cooking! Type 'exit' to quit.\n")
+  print("\n👨‍🍳 RecipeBot: Co chcesz ugotować dzisiaj? Wpisz 'exit' aby wyjść.\n")
 
   # Run the agent in a loop for interactive conversation.
   while True:
     user_input = input("\nYou > ")
 
     if user_input.lower() == "exit":
-      print("Happy cooking! 🍽️")
+      print("Udanego Gotowania! 🍽️")
       break
 
     response = recipe_agent(user_input)
