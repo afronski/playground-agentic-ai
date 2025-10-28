@@ -1,12 +1,10 @@
 import logging
-
 from ddgs import DDGS
 from ddgs.exceptions import DDGSException, RatelimitException
 from strands import Agent, tool
-from strands.models import BedrockModel
 
 # Enables Strands `debug` log level and log it to a file.
-agentName = "11-recipe-bot-with-bedrock"
+agentName = "13-recipe-bot-as-event-loop"
 logging.getLogger("strands").setLevel(logging.DEBUG)
 
 logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
@@ -39,12 +37,26 @@ def websearch(keywords: str, region: str = "us-en", max_results: int | None = No
   except Exception as e:
     return f"Exception: {e}"
 
-# Create a Bedrock model.
-bedrock_model = BedrockModel(
-  model_id="eu.amazon.nova-pro-v1:0",
-  region_name="eu-west-1",
-  temperature=0.3
-)
+# Event loop callback with detailed logging.
+def event_loop_tracker(**kwargs):
+  if kwargs.get("init_event_loop", False):
+    print("🔄 Event loop initialized")
+  elif kwargs.get("start_event_loop", False):
+    print("▶️ Event loop cycle starting")
+  elif "message" in kwargs:
+    print(f"📬 New message created: {kwargs['message']['role']}")
+  elif kwargs.get("complete", False):
+    print("✅ Cycle completed")
+  elif kwargs.get("force_stop", False):
+    print(f"🛑 Event loop force-stopped: {kwargs.get('force_stop_reason', 'unknown reason')}")
+
+  if "current_tool_use" in kwargs and kwargs["current_tool_use"].get("name"):
+    tool_name = kwargs["current_tool_use"]["name"]
+    print(f"🔧 Using tool: {tool_name}")
+
+  if "data" in kwargs:
+    data_snippet = kwargs["data"][:20] + ("..." if len(kwargs["data"]) > 20 else "")
+    print(f"📟 Text: {data_snippet}")
 
 # Create a recipe assistant agent.
 recipe_agent = Agent(
@@ -53,8 +65,8 @@ recipe_agent = Agent(
     Help users find recipes based on ingredients and answer cooking questions.
     Use the websearch tool to find recipes when users mention ingredients or to look up cooking information.
     """,
-  model=bedrock_model,
   tools=[websearch],
+  callback_handler=event_loop_tracker
 )
 
 if __name__ == "__main__":

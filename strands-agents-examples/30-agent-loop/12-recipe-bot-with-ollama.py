@@ -5,7 +5,7 @@ from strands import Agent, tool
 from strands.models.ollama import OllamaModel
 
 # Enables Strands `debug` log level and log it to a file.
-agentName = "10-recipe-bot"
+agentName = "12-recipe-bot-with-ollama"
 logging.getLogger("strands").setLevel(logging.DEBUG)
 
 logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
@@ -62,6 +62,10 @@ if __name__ == "__main__":
   # Run the agent in a loop for interactive conversation.
   while True:
     user_input = input("\nYou > ")
+
+    if user_input is None or user_input == "":
+      print("You have to provide input to continue.")
+      continue
 
     if user_input.lower() == "exit":
       print("Udanego Gotowania! 🍽️")

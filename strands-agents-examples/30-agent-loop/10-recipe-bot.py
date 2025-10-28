@@ -54,6 +54,10 @@ if __name__ == "__main__":
   while True:
     user_input = input("\nYou > ")
 
+    if user_input is None or user_input == "":
+      print("You have to provide input to continue.")
+      continue
+
     if user_input.lower() == "exit":
       print("Happy cooking! 🍽️")
       break
