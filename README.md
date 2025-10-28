@@ -18,12 +18,7 @@ If you would like to start all the dependent services, run the following command
 ```shell
 # After cloning it, inside the the repository root:
 
-$ cd examples
-$ finch vm start                                    # ... if `finch` did not start virtual machine yet.
-$ finch compose up -d                               # ... or compatible ones like: `docker compose up -d`.
-$ cd ../infrastructure
-$ npm install
-$ npm run package
+$ finch vm start             # ... if `finch` did not start virtual machine yet.
 ```
 
 ## Remarks
@@ -36,6 +31,7 @@ $ npm run package
 - [Building Intelligent Agents with Strands: A Hands-On Guide](https://www.youtube.com/watch?v=TD2ihEBkdkY)
 - [Deploy ANY AI Agent to Production in Minutes - Amazon Bedrock AgentCore Tutorial](https://www.youtube.com/watch?v=N7FGbBq1mI4)
 - [AWS MCP Servers](https://awslabs.github.io/mcp)
+- [AWS Workshop: Diving Deep into Amazon Bedrock AgentCore](https://catalog.us-east-1.prod.workshops.aws/workshops/015a2de4-9522-4532-b2eb-639280dc31d8/en-US)
 
 ## License
 
