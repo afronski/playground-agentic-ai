@@ -21,6 +21,13 @@ If you would like to start all the dependent services, run the following command
 $ finch vm start             # ... if `finch` did not start virtual machine yet.
 ```
 
+## TODOs
+
+- [ ] Testing prompts and agents - *how*?
+- [ ] Spring AI example locally and on AgentCore. (https://github.com/jamesward/hello-spring-ai-agentcore).
+- [ ] Spring AI MCP server example locally and on AgentCore (https://github.com/jamesward/spring-ai-mcp-demo).
+
+
 ## Remarks
 
 - *Strands Agents* does not support [Elicitation](https://modelcontextprotocol.io/specification/2025-06-18/client/elicitation) yet ([ticket is here](https://github.com/strands-agents/sdk-python/issues/789)).
