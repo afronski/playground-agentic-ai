@@ -1,10 +1,10 @@
 # `playground-agentic-ai`
 
-Example of how to use write agents, *MCP* servers, and clients - all of that with [Strands Agents](https://strandsagents.com/latest/) (in _Python_ :snake:), [Spring AI](https://spring.io/projects/spring-ai), [FastMCP](https://gofastmcp.com/getting-started/welcome), and deploy that with [FastAPI](https://fastapi.tiangolo.com/) via containers, on [AWS Lambda](https://aws.amazon.com/pm/lambda/) via [AWS SAM](https://aws.amazon.com/serverless/sam/), and [Amazon Bedrock AgentCore](https://aws.amazon.com/bedrock/agentcore/).
+Example of how to create agents, *MCP* servers, and clients - all of that with [Strands Agents](https://strandsagents.com/latest/) (in _Python_ :snake:), [Spring AI](https://spring.io/projects/spring-ai), [FastMCP](https://gofastmcp.com/getting-started/welcome), and deploy that with [FastAPI](https://fastapi.tiangolo.com/) via containers, on [AWS Lambda](https://aws.amazon.com/pm/lambda/) via [AWS SAM](https://aws.amazon.com/serverless/sam/), and [Amazon Bedrock AgentCore](https://aws.amazon.com/bedrock/agentcore/).
 
 ## Local Development
 
-Here you can find a list of the recommended prerequisites for this repository.
+Here is a list of the recommended prerequisites for this repository.
 
 - Pre-installed tools:
   - [Finch](https://runfinch.com) or any other tool for local container development, that is compatible with *Docker* APIs.
@@ -18,17 +18,16 @@ Here you can find a list of the recommended prerequisites for this repository.
 If you would like to start all the dependent services, run the following commands:
 
 ```shell
-# After cloning it, inside the the repository root:
+# After cloning it, inside the repository root:
 
-$ finch vm start             # ... if `finch` did not start virtual machine yet.
+$ finch vm start             # ... if `finch` did not start the virtual machine yet.
 ```
 
 ## TODOs
 
-- [ ] Example on testing prompts and agents.
-- [ ] Example for Amazon Bedrock AgentCore AWS CloudFormation:
-- [ ] Spring AI example locally and on AgentCore. (https://github.com/jamesward/hello-spring-ai-agentcore).
-- [ ] Spring AI MCP server example locally and on AgentCore (https://github.com/jamesward/spring-ai-mcp-demo).
+- [ ] Strands Agents: example on testing prompts and agents.
+- [ ] Spring AI: agent deployed locally and on AgentCore. (https://github.com/jamesward/hello-spring-ai-agentcore)
+- [ ] Spring AI: an MCP server example deployed locally and on AgentCore. (https://github.com/jamesward/spring-ai-mcp-demo)
 
 ## Resources
 
