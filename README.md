@@ -1,5 +1,7 @@
 # `playground-agentic-ai`
 
+Example of how to use write agents, *MCP* servers, and clients - all of that with [Strands Agents](https://strandsagents.com/latest/) (in _Python_ :snake:), [Spring AI](https://spring.io/projects/spring-ai), [FastMCP](https://gofastmcp.com/getting-started/welcome), and deploy that with [FastAPI](https://fastapi.tiangolo.com/) via containers, on [AWS Lambda](https://aws.amazon.com/pm/lambda/) via [AWS SAM](https://aws.amazon.com/serverless/sam/), and [Amazon Bedrock AgentCore](https://aws.amazon.com/bedrock/agentcore/).
+
 ## Local Development
 
 Here you can find a list of the recommended prerequisites for this repository.
