@@ -1,23 +1,23 @@
-boto3==1.40.56
-botocore==1.40.56
+boto3==1.40.74
+botocore==1.40.74
 
-strands-agents==1.13.0
-strands-agents-tools==0.2.12
+strands-agents==1.16.0
+strands-agents-tools==0.2.15
 strands-agents-builder==0.1.10
 
-bedrock-agentcore==1.0.4
-bedrock-agentcore-starter-toolkit==0.1.26
+bedrock-agentcore==1.0.6
+bedrock-agentcore-starter-toolkit==0.1.33
 
 uv
 
-fastapi[standard]==0.119.1
-pydantic==2.12.3
+fastapi[standard]==0.121.2
+pydantic==2.12.4
 
-mcp==1.18.0
-fastmcp==2.12.4
+mcp==1.21.0
+fastmcp==2.13.1
 
 python-json-logger==4.0.0
-aws-lambda-powertools[aws-sdk]==3.22.0
+aws-lambda-powertools[aws-sdk]==3.23.0
 
 ddgs
 langfuse

@@ -1,5 +1,6 @@
 import logging
 from mcp.client.streamable_http import streamablehttp_client
+from mcp.types import ElicitResult
 from strands import Agent
 from strands.tools.mcp import MCPClient
 
@@ -16,9 +17,20 @@ logging.basicConfig(
   handlers=[fileHandler]
 )
 
+async def elicitation_callback(context, params):
+  print(f"ELICITATION CONTEXT: {context}")
+  print(f"ELICITATION MESSAGE: {params.message}")
+
+  # noinspection PyTypeChecker
+  return ElicitResult(
+    action="accept",
+    content={'name': "Wojtek"}
+  )
+
 # Connect to an MCP server using streamable HTTP transport.
 streamable_http_mcp_client = MCPClient(
-  lambda: streamablehttp_client("http://localhost:8000/mcp")
+  lambda: streamablehttp_client("http://localhost:8000/mcp"),
+  elicitation_callback=elicitation_callback
 )
 
 # Get the tools from the MCP server and create an agent with them.
@@ -26,4 +38,4 @@ with streamable_http_mcp_client:
   tools = streamable_http_mcp_client.list_tools_sync()
   agent = Agent(tools=tools)
 
-  print(agent.tool.greet(name="Strands"))
+  print(agent.tool.greet())

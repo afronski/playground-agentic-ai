@@ -32,8 +32,7 @@ with open("assets/CV.pdf", "rb") as fp:
 agent = Agent()
 
 # noinspection PyTypeChecker
-result = agent.structured_output(
-  PersonInfo,
+result = agent(
   [
     {"text": "Please process this application."},
     {
@@ -45,8 +44,11 @@ result = agent.structured_output(
         },
       },
     },
-  ]
+  ],
+  structured_output_model=PersonInfo
 )
+
+result = result.structured_output
 
 print(f"Name: {result.name}")
 print(f"Years of Experience: {result.years_of_experience}")
