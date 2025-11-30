@@ -23,18 +23,22 @@ If you would like to start all the dependent services, run the following command
 $ finch vm start             # ... if `finch` did not start the virtual machine yet.
 ```
 
-## TODOs
-
-- [ ] Strands Agents: example on testing prompts and agents.
-- [ ] Spring AI: agent deployed locally and on AgentCore. (https://github.com/jamesward/hello-spring-ai-agentcore)
-- [ ] Spring AI: an MCP server example deployed locally and on AgentCore. (https://github.com/jamesward/spring-ai-mcp-demo)
-
 ## Resources
 
+### Strands Agents
+
 - [Building Intelligent Agents with Strands: A Hands-On Guide](https://www.youtube.com/watch?v=TD2ihEBkdkY)
-- [Deploy ANY AI Agent to Production in Minutes - Amazon Bedrock AgentCore Tutorial](https://www.youtube.com/watch?v=N7FGbBq1mI4)
+
+### AWS MCP
+
 - [AWS MCP Servers](https://awslabs.github.io/mcp)
+
+### Amazon Bedrock AgentCore
+
+- [Deploy ANY AI Agent to Production in Minutes - Amazon Bedrock AgentCore Tutorial](https://www.youtube.com/watch?v=N7FGbBq1mI4)
 - [AWS Workshop: Diving Deep into Amazon Bedrock AgentCore](https://catalog.us-east-1.prod.workshops.aws/workshops/015a2de4-9522-4532-b2eb-639280dc31d8/en-US)
+- [Spring AI: agent deployed locally and on AgentCore](https://github.com/jamesward/hello-spring-ai-agentcore)
+- [Spring AI: an MCP server example deployed locally and on AgentCore](https://github.com/jamesward/spring-ai-mcp-demo)
 
 ## License
 
